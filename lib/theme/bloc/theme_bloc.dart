@@ -1,28 +1,27 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/theme/bloc/theme_event.dart';
 import 'package:habit_tracker/theme/bloc/theme_state.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:json_theme/json_theme.dart';
 
-class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
+final ThemeState initialTheme = ThemeState(
+  isNightMode: false,
+  themeData: ThemeData(
+    primaryColor: const Color.fromARGB(255, 0, 140, 255),
+    dividerColor: const Color.fromARGB(255, 63, 63, 63),
+    textTheme: const TextTheme(
+      titleMedium: TextStyle(
+          fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: 5),
+      titleSmall: TextStyle(
+          fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 4),
+      bodyMedium: TextStyle(fontSize: 16),
+    ),
+  ),
+);
+
+class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
   //This ThemeData will be the default theme data
-  ThemeBloc()
-      : super(ThemeState(
-            isNightMode: false,
-            themeData: ThemeData(
-              primaryColor: const Color.fromARGB(255, 0, 140, 255),
-              dividerColor: const Color.fromARGB(255, 63, 63, 63),
-              textTheme: const TextTheme(
-                titleMedium: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 5),
-                titleSmall: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 4),
-                bodyMedium: TextStyle(fontSize: 16),
-              ),
-            ))) {
+  ThemeBloc() : super(initialTheme) {
     on((ThemeColorChanged event, emit) {
       emit(ThemeState(
           isNightMode: state.isNightMode,
@@ -93,56 +92,19 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   }
 
   @override
-  Stream<ThemeData> mapEventToState(ThemeEvent themeEvent) async* {
-    if (themeEvent is LightModeSelected) {
-      //Light Mode ThemeData
+  ThemeState? fromJson(Map<String, dynamic> json) {
+    return ThemeState(
+        isNightMode: json["isNightMode"],
+        themeData: ThemeDecoder.decodeThemeData(json["themeData"]) ??
+            initialTheme.themeData);
+  }
 
-      yield ThemeData(
-        primaryColor: Colors.blue, // set the primary color
-        accentColor: Colors.blueAccent, // set the accent color
-        scaffoldBackgroundColor:
-            Colors.white, // set the background color of the scaffold
-        backgroundColor:
-            Colors.grey[100], // set the background color of the entire app
-        dialogBackgroundColor:
-            Colors.white, // set the background color of dialogs
-        cardColor: Colors.white, // set the background color of cards
-        textTheme: TextTheme(
-          titleMedium: TextStyle(fontSize: 24),
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor:
-              Colors.white, // set the background color of the app bar
-          foregroundColor: Colors.black, // set the text color of the app bar
-        ),
-        iconTheme: IconThemeData(color: Colors.black), // set the color of icons
-      );
-    }
-    if (themeEvent is DarkModeSelected) {
-      //Dark Mode ThemeData
-      yield ThemeData(
-        primaryColor: Colors.blueGrey[900], // set the primary color
-        accentColor: Colors.blueAccent, // set the accent color
-        scaffoldBackgroundColor:
-            Colors.grey[900], // set the background color of the scaffold
-        backgroundColor:
-            Colors.grey[800], // set the background color of the entire app
-        dialogBackgroundColor:
-            Colors.grey[800], // set the background color of dialogs
-        cardColor: Colors.grey[800], // set the background color of cards
-        textTheme: TextTheme(
-          headline6:
-              TextStyle(color: Colors.white), // set the text color of headlines
-          bodyText2:
-              TextStyle(color: Colors.white), // set the text color of body text
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor:
-              Colors.grey[900], // set the background color of the app bar
-          foregroundColor: Colors.white, // set the text color of the app bar
-        ),
-        iconTheme: IconThemeData(color: Colors.white),
-      );
-    }
+  @override
+  Map<String, dynamic>? toJson(ThemeState state) {
+    return {
+      "isNightMode": state.isNightMode,
+      "themeData": ThemeEncoder.encodeThemeData(state.themeData)
+    };
+    // return {"isNightMode": state.isNightMode, "themeDataPrimaryColor": state.themeData.primaryColor,"themeDataPrimaryColorDark":state.themeData.primaryColorDark,"themeDataPrimaryColorLight":state.themeData.primaryColorLight,"themeDataDividerColor":state.themeData.dividerColor,"theme"};
   }
 }

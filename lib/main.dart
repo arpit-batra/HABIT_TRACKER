@@ -3,8 +3,14 @@ import 'package:habit_tracker/screens/home_screen.dart';
 import 'package:habit_tracker/theme/bloc/theme_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/theme/bloc/theme_state.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final appDirectory = await getApplicationDocumentsDirectory();
+  HydratedBloc.storage =
+      await HydratedStorage.build(storageDirectory: appDirectory);
   runApp(const MyApp());
 }
 
