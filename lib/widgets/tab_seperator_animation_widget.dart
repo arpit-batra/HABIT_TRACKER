@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 enum Direction { left, right }
 
-class TabSwitcherWidget extends StatefulWidget {
-  const TabSwitcherWidget({required this.direction, super.key});
+class TabSeperatorAnimationWidget extends StatefulWidget {
+  const TabSeperatorAnimationWidget({required this.direction, super.key});
   final Direction direction;
   @override
-  State<TabSwitcherWidget> createState() => TabSwitcherWidgetState();
+  State<TabSeperatorAnimationWidget> createState() =>
+      TabSeperatorAnimationWidgetState();
 }
 
-class TabSwitcherWidgetState extends State<TabSwitcherWidget>
-    with TickerProviderStateMixin {
+class TabSeperatorAnimationWidgetState
+    extends State<TabSeperatorAnimationWidget> with TickerProviderStateMixin {
   late AnimationController seperatorWidthAnimationController;
   late AnimationController seperatorLeftAnimationController;
   late AnimationController seperatorRightAnimationController;

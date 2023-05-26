@@ -10,12 +10,13 @@ final ThemeState initialTheme = ThemeState(
     primaryColor: const Color.fromARGB(255, 0, 140, 255),
     dividerColor: const Color.fromARGB(255, 63, 63, 63),
     textTheme: const TextTheme(
-      titleMedium: TextStyle(
-          fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: 5),
-      titleSmall: TextStyle(
-          fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 4),
-      bodyMedium: TextStyle(fontSize: 16),
-    ),
+        titleMedium: TextStyle(
+            fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: 5),
+        titleSmall: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 4),
+        bodyMedium: TextStyle(fontSize: 16),
+        labelMedium: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
   ),
 );
 

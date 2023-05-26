@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -5,18 +7,21 @@ import 'package:habit_tracker/tabs/habit_tracker_tab.dart';
 import 'package:habit_tracker/tabs/home_tab.dart';
 import 'package:habit_tracker/tabs/settings_tab.dart';
 import 'package:habit_tracker/theme/bloc/theme_bloc.dart';
-import 'package:habit_tracker/widgets/tab_switcher_widget.dart';
+import 'package:habit_tracker/widgets/home_tab/route_animation.dart';
+import 'package:habit_tracker/widgets/tab_seperator_animation_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => HomeScreenState();
+  static const tabSwitcherHeight = 110.0;
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  GlobalKey<TabSwitcherWidgetState> _leftSwitcherKey = GlobalKey();
-  GlobalKey<TabSwitcherWidgetState> _rightSwitcherKey = GlobalKey();
+class HomeScreenState extends State<HomeScreen> {
+  static GlobalKey<RouteAnimationState> routeAnimationKey = GlobalKey();
+  GlobalKey<TabSeperatorAnimationWidgetState> _leftSwitcherKey = GlobalKey();
+  GlobalKey<TabSeperatorAnimationWidgetState> _rightSwitcherKey = GlobalKey();
   int _selectedTab = 0;
 
   Widget _tabViewer() {
@@ -38,20 +43,25 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           _tabViewer(),
-          TabSwitcherWidget(
+          TabSeperatorAnimationWidget(
             direction: Direction.left,
             key: _leftSwitcherKey,
           ),
-          TabSwitcherWidget(
+          TabSeperatorAnimationWidget(
             direction: Direction.right,
             key: _rightSwitcherKey,
           ),
+          RouteAnimation(
+              key: routeAnimationKey,
+              startingPoint: Point(20, HomeScreen.tabSwitcherHeight)),
           Positioned(
             left: 0,
             right: 0,
             bottom: 0,
             child: Container(
+              height: HomeScreen.tabSwitcherHeight,
               color: Theme.of(context).scaffoldBackgroundColor,
+              // color: Colors.amber,
               padding: const EdgeInsets.only(top: 16),
               child: SafeArea(
                 top: false,
