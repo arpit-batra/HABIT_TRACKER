@@ -39,6 +39,10 @@ dependencies:
   json_theme: ^5.0.2+6
   path_provider: ^2.0.15
   shared_preferences: ^2.1.1
+  icon_picker:
+    path: ./packages/icon_picker
+  flutter_iconpicker:
+    path: ./packages/FlutterIconPicker
 
 dev_dependencies:
   flutter_lints: ^2.0.0

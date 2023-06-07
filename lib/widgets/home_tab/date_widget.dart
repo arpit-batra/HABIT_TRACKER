@@ -6,8 +6,9 @@ import 'package:habit_tracker/bloc/selected_date/selected_date_state.dart';
 import 'package:habit_tracker/helper/date_helper.dart';
 
 class DateWidget extends StatelessWidget {
-  const DateWidget({required this.date, super.key});
+  const DateWidget({required this.date, required this.totalWidth, super.key});
   final DateTime date;
+  final double totalWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -22,35 +23,31 @@ class DateWidget extends StatelessWidget {
         return Column(
           children: [
             Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                      color: Theme.of(context).textTheme.titleMedium!.color!,
-                      width: 1)),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(14, 8, 14, 8),
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Column(
-                    children: [
-                      Text(date.day.toString()),
-                      Text(DateHelper
-                          .weekDaysArray[date.weekday - 1].leadingChar)
-                    ],
-                  ),
+              width: totalWidth / 7,
+              padding: const EdgeInsets.all(3),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: Theme.of(context).textTheme.titleMedium!.color!,
+                        width: 1)),
+                child: Column(
+                  children: [
+                    Text(date.day.toString()),
+                    Text(DateHelper.weekDaysArray[date.weekday - 1].leadingChar)
+                  ],
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 4,
             ),
             if (DateHelper.onlyDateFromDateTime(state.selectedDate) ==
                 DateHelper.onlyDateFromDateTime(date))
               Container(
                 height: 10,
                 width: 10,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.black),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).textTheme.titleMedium!.color!),
               )
           ],
         );

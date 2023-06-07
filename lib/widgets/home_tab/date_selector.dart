@@ -18,8 +18,11 @@ class DateSelector extends StatelessWidget {
           return SizedBox(
             width: screenWidth,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: week.map((date) => DateWidget(date: date)).toList(),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: week
+                  .map(
+                      (date) => DateWidget(date: date, totalWidth: screenWidth))
+                  .toList(),
             ),
           );
         },
