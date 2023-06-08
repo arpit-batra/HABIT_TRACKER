@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_tracker/models/date.dart';
 import 'package:habit_tracker/models/goal_model.dart';
 import 'package:habit_tracker/models/habit_model.dart';
 
@@ -12,6 +13,8 @@ class NewHabitCubit extends Cubit<Habit> {
             color: Colors.blue,
             goal: Goal(),
             name: "New Habit",
+            startDate: Date.today(),
+            endDate: Date(date: 1, month: 1, year: 2100),
           ),
         );
 

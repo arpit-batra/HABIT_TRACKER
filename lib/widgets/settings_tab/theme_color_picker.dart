@@ -93,7 +93,6 @@ class ThemeColorPicker extends StatelessWidget {
                 );
               },
               onColorChanged: (color) {
-                print("Need to change color to $color");
                 context.read<ThemeBloc>().add(ThemeColorChanged(
                     color,
                     colorChoices[color]!['dark']!,

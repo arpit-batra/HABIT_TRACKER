@@ -20,8 +20,9 @@ class DateSelector extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: week
-                  .map(
-                      (date) => DateWidget(date: date, totalWidth: screenWidth))
+                  .map((date) => DateWidget(
+                      date: DateHelper.convertDateTimeToDate(date),
+                      totalWidth: screenWidth))
                   .toList(),
             ),
           );

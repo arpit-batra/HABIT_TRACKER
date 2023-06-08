@@ -30,21 +30,25 @@ environment:
 dependencies:
   bloc: ^8.1.1
   cupertino_icons: ^1.0.2
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
   flutter_colorpicker: ^1.0.3
+  flutter_iconpicker:
+    path: ./packages/FlutterIconPicker
   google_nav_bar: ^5.0.6
   hydrated_bloc: ^9.1.0
+  icon_picker:
+    path: ./packages/icon_picker
+  json_annotation: ^4.8.1
   json_theme: ^5.0.2+6
   path_provider: ^2.0.15
   shared_preferences: ^2.1.1
-  icon_picker:
-    path: ./packages/icon_picker
-  flutter_iconpicker:
-    path: ./packages/FlutterIconPicker
 
 dev_dependencies:
+  json_serializable: ^6.7.0
+  build_runner: ^2.4.5
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

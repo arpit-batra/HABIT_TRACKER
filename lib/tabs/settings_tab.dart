@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:habit_tracker/widgets/settings_tab/night_mode_picker.dart';
 import 'package:habit_tracker/widgets/settings_tab/theme_color_picker.dart';
 import 'package:habit_tracker/widgets/tab_headings.dart';

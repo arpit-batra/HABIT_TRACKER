@@ -1,4 +1,6 @@
+import 'package:habit_tracker/models/date.dart';
+
 class SelectedDateState {
   SelectedDateState({required this.selectedDate});
-  final DateTime selectedDate;
+  final Date selectedDate;
 }

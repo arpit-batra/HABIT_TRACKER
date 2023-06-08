@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:habit_tracker/models/date.dart';
 
 class Day {
   const Day(
@@ -61,15 +61,41 @@ class DateHelper {
     return "${input.day}/${input.month}/${input.year}";
   }
 
-  static String homeTabHeading(DateTime inputDate) {
-    if (onlyDateFromDateTime(inputDate) == onlyDateFromDateTime(todaysDate)) {
+  static Date convertDateTimeToDate(DateTime input) {
+    return Date(date: input.day, month: input.month, year: input.year);
+  }
+
+  static DateTime convertDateToDateTime(Date input) {
+    return DateTime(input.year, input.month, input.date);
+  }
+
+  // static String homeTabHeading(DateTime inputDate) {
+  //   if (onlyDateFromDateTime(inputDate) == onlyDateFromDateTime(todaysDate)) {
+  //     return "Today";
+  //   } else if (inputDate.day == todaysDate.day - 1 &&
+  //       inputDate.month == todaysDate.month &&
+  //       inputDate.year == todaysDate.year) {
+  //     return "Yesterday";
+  //   } else {
+  //     return "${monthNameArray[inputDate.month - 1]} ${inputDate.day}";
+  //   }
+  // }
+
+  static String homeTabHeading(Date inputDate) {
+    final todayInDateFormat = convertDateTimeToDate(todaysDate);
+    if (inputDate == todayInDateFormat) {
       return "Today";
-    } else if (inputDate.day == todaysDate.day - 1 &&
-        inputDate.month == todaysDate.month &&
-        inputDate.year == todaysDate.year) {
+    } else if (inputDate.date == todayInDateFormat.date - 1 &&
+        inputDate.month == todayInDateFormat.month &&
+        inputDate.year == todayInDateFormat.year) {
       return "Yesterday";
     } else {
-      return "${monthNameArray[inputDate.month - 1]} ${inputDate.day}";
+      return "${monthNameArray[inputDate.month - 1]} ${inputDate.date}";
     }
+  }
+
+  static bool isDateABetweenBAndC(Date a, Date b, Date c) {
+    return convertDateToDateTime(a).isBefore(convertDateToDateTime(c)) &&
+        convertDateToDateTime(a).isAfter(convertDateToDateTime(b));
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/bloc/new_habit_form.dart/new_habit_cubit.dart';
@@ -132,9 +130,13 @@ class _GoalSelectorState extends State<GoalSelector> {
               }
               return null;
             },
-            onChanged: (value) => context
-                .read<NewHabitCubit>()
-                .setHabitGoalCount(int.parse(value)),
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                context
+                    .read<NewHabitCubit>()
+                    .setHabitGoalCount(int.parse(value));
+              }
+            },
             keyboardType: TextInputType.number,
           ),
         ),

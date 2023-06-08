@@ -4,10 +4,11 @@ import 'package:habit_tracker/bloc/selected_date/selected_date_bloc.dart';
 import 'package:habit_tracker/bloc/selected_date/selected_date_event.dart';
 import 'package:habit_tracker/bloc/selected_date/selected_date_state.dart';
 import 'package:habit_tracker/helper/date_helper.dart';
+import 'package:habit_tracker/models/date.dart';
 
 class DateWidget extends StatelessWidget {
   const DateWidget({required this.date, required this.totalWidth, super.key});
-  final DateTime date;
+  final Date date;
   final double totalWidth;
 
   @override
@@ -34,14 +35,16 @@ class DateWidget extends StatelessWidget {
                         width: 1)),
                 child: Column(
                   children: [
-                    Text(date.day.toString()),
-                    Text(DateHelper.weekDaysArray[date.weekday - 1].leadingChar)
+                    Text(date.date.toString()),
+                    Text(DateHelper
+                        .weekDaysArray[
+                            DateHelper.convertDateToDateTime(date).weekday - 1]
+                        .leadingChar)
                   ],
                 ),
               ),
             ),
-            if (DateHelper.onlyDateFromDateTime(state.selectedDate) ==
-                DateHelper.onlyDateFromDateTime(date))
+            if (state.selectedDate == date)
               Container(
                 height: 10,
                 width: 10,

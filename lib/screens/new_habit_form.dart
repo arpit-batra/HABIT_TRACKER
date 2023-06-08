@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:habit_tracker/bloc/habits_list/habits_list_bloc.dart';
 import 'package:habit_tracker/bloc/habits_list/habits_list_event.dart';
 import 'package:habit_tracker/bloc/new_habit_form.dart/new_habit_cubit.dart';
@@ -10,7 +9,6 @@ import 'package:habit_tracker/widgets/new_habit_form/goal_selector.dart';
 import 'package:habit_tracker/widgets/new_habit_form/icon_selector.dart';
 import 'package:habit_tracker/widgets/new_habit_form/name_selector.dart';
 import 'package:habit_tracker/widgets/tab_headings.dart';
-import 'package:icon_picker/icon_picker.dart';
 
 class NewHabitForm extends StatefulWidget {
   NewHabitForm({super.key});

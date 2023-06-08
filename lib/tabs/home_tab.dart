@@ -1,14 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/bloc/habits_list/habits_list_bloc.dart';
-import 'package:habit_tracker/bloc/habits_list/habits_list_state.dart';
 import 'package:habit_tracker/bloc/selected_date/selected_date_bloc.dart';
 import 'package:habit_tracker/bloc/selected_date/selected_date_state.dart';
 import 'package:habit_tracker/helper/date_helper.dart';
 import 'package:habit_tracker/screens/home_screen.dart';
 import 'package:habit_tracker/screens/new_habit_form.dart';
 import 'package:habit_tracker/widgets/home_tab/date_selector.dart';
+import 'package:habit_tracker/widgets/home_tab/habits_list_view.dart';
 import 'package:habit_tracker/widgets/tab_headings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -86,34 +83,8 @@ class HomeTab extends StatelessWidget {
                     //Date Selector
                     DateSelector(),
                     //List of Habits
-                    Expanded(
-                      child: BlocBuilder<HabitsListBloc, HabitsListState>(
-                        builder: (context, state) {
-                          return ListView.builder(
-                            itemBuilder: (ctx, index) {
-                              final habit = state.habits[index];
-                              return Container(
-                                margin: const EdgeInsets.all(8),
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: habit.color,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(5),
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    habit.icon,
-                                    const SizedBox(width: 10),
-                                    Text(habit.name),
-                                  ],
-                                ),
-                              );
-                            },
-                            itemCount: state.habits.length,
-                          );
-                        },
-                      ),
+                    const Expanded(
+                      child: HabitsListView(),
                     )
                   ],
                 ),
