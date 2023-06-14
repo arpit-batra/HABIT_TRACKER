@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'goal_model.g.dart';
+part 'goal.g.dart';
 
 enum GoalUnit {
   count,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:habit_tracker/bloc/new_habit_form.dart/new_habit_cubit.dart';
-import 'package:habit_tracker/models/habit_model.dart';
+import 'package:habit_tracker/models/habit.dart';
 
 class IconSelector extends StatefulWidget {
   const IconSelector({super.key});

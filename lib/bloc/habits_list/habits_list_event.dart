@@ -1,4 +1,4 @@
-import 'package:habit_tracker/models/habit_model.dart';
+import 'package:habit_tracker/models/habit.dart';
 
 class HabitsListEvent {
   const HabitsListEvent();

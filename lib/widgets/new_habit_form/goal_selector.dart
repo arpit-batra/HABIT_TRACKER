@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/bloc/new_habit_form.dart/new_habit_cubit.dart';
-import 'package:habit_tracker/models/goal_model.dart';
-import 'package:habit_tracker/models/habit_model.dart';
+import 'package:habit_tracker/models/goal.dart';
+import 'package:habit_tracker/models/habit.dart';
 import 'package:habit_tracker/theme/bloc/theme_bloc.dart';
 
 class GoalSelector extends StatefulWidget {

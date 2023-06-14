@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:habit_tracker/bloc/habits_list/habits_list_event.dart';
 import 'package:habit_tracker/bloc/habits_list/habits_list_state.dart';
-import 'package:habit_tracker/models/habit_model.dart';
+import 'package:habit_tracker/models/habit.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class HabitsListBloc extends HydratedBloc<HabitsListEvent, HabitsListState> {

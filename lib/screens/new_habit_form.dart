@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/bloc/habits_list/habits_list_bloc.dart';
 import 'package:habit_tracker/bloc/habits_list/habits_list_event.dart';
 import 'package:habit_tracker/bloc/new_habit_form.dart/new_habit_cubit.dart';
-import 'package:habit_tracker/models/habit_model.dart';
+import 'package:habit_tracker/models/habit.dart';
 import 'package:habit_tracker/widgets/new_habit_form/color_selector.dart';
 import 'package:habit_tracker/widgets/new_habit_form/goal_selector.dart';
 import 'package:habit_tracker/widgets/new_habit_form/icon_selector.dart';

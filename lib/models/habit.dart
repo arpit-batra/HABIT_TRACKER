@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/models/date.dart';
-import 'package:habit_tracker/models/goal_model.dart';
+import 'package:habit_tracker/models/goal.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'habit_model.g.dart';
+part 'habit.g.dart';
 
 class ColorConverter extends JsonConverter<Color, Map<String, dynamic>> {
   const ColorConverter();
