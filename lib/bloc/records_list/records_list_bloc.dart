@@ -5,7 +5,7 @@ import 'package:habit_tracker/bloc/records_list/records_list_state.dart';
 import 'package:habit_tracker/models/record.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-class RecordListBloc extends HydratedBloc<RecordListEvent, RecordsListState> {
+class RecordListBloc extends HydratedBloc<RecordsListEvent, RecordsListState> {
   RecordListBloc() : super(RecordsListState(recordList: [])) {
     on((AddOrUpdateRecord event, emit) {
       if (state.recordList

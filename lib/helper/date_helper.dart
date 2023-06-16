@@ -98,4 +98,39 @@ class DateHelper {
     return convertDateToDateTime(a).isBefore(convertDateToDateTime(c)) &&
         convertDateToDateTime(a).isAfter(convertDateToDateTime(b));
   }
+
+  //For Creating the Calendar
+
+  static DateTime getFirstDayOfTheMonth(DateTime date) {
+    //This date can be any date of the month
+    return date.subtract(Duration(days: date.day - 1));
+  }
+
+  static DateTime getFirstDayOfPreviousMonth(DateTime date) {
+    final lastDayOfPreviousMonth = date.subtract(Duration(days: date.day));
+    return getFirstDayOfTheMonth(lastDayOfPreviousMonth);
+  }
+
+  static DateTime getFirstDayOfNextMonth(DateTime date) {
+    var tempDate = date.add(Duration(days: 25));
+    while (tempDate.month == date.month) {
+      tempDate = tempDate.add(const Duration(days: 1));
+    }
+    return getFirstDayOfTheMonth(tempDate);
+  }
+
+  static DateTime getFirstDayOfCurrentMonth() {
+    return getFirstDayOfTheMonth(DateTime.now());
+  }
+
+  static List<DateTime> getAllDatesOfMonthWhoseFirstDateIs(DateTime date) {
+    List<DateTime> listOfAllDatesOfMonth = [];
+    var counterDate =
+        DateTime(date.year, date.month, date.day, date.hour, date.minute);
+    while (counterDate.month == date.month) {
+      listOfAllDatesOfMonth.add(counterDate);
+      counterDate = counterDate.add(const Duration(days: 1));
+    }
+    return listOfAllDatesOfMonth;
+  }
 }
