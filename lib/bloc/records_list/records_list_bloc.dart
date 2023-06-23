@@ -30,6 +30,13 @@ class RecordListBloc extends HydratedBloc<RecordsListEvent, RecordsListState> {
       temp.remove(event.record);
       emit(RecordsListState(recordList: temp));
     });
+
+    on((RemoveRecordsOfAHabit event, emit) {
+      final recordsTemp = state.recordList;
+      recordsTemp
+          .removeWhere((element) => element.habitName == event.habit.name);
+      emit(RecordsListState(recordList: recordsTemp));
+    });
   }
 
   @override

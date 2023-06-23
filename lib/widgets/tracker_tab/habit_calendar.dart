@@ -65,8 +65,6 @@ class _HabitCalendarState extends State<HabitCalendar> {
 
   List<Widget> _allDaysOfTheSelectedMonth(
       List<Record> selectedHabitRecords, Habit? selectedHabit) {
-    print(selectedHabit != null ? selectedHabit.name : "");
-    print(selectedHabitRecords);
     List<Widget> ans = [];
     List<DateTime> allDates =
         DateHelper.getAllDatesOfMonthWhoseFirstDateIs(firstDateOfSelectedMonth);
@@ -74,17 +72,13 @@ class _HabitCalendarState extends State<HabitCalendar> {
       ans.add(Container());
     for (int i = 0; i < allDates.length; i++) {
       var prefferedOpacity = 0.0;
-      print(allDates[i].toString());
       if (selectedHabitRecords
               .where((element) =>
                   element.date == DateHelper.convertDateTimeToDate(allDates[i]))
               .isNotEmpty &&
           selectedHabit != null) {
-        print("Hi");
         final thisDatesRecord = selectedHabitRecords.firstWhere((element) =>
             element.date == DateHelper.convertDateTimeToDate(allDates[i]));
-        print(
-            "This Dates Record ${allDates[i].toString()} -> ${thisDatesRecord}");
         prefferedOpacity =
             (thisDatesRecord.countCompleted / selectedHabit.goal.goalCount) *
                 255;

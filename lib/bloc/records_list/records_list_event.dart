@@ -1,3 +1,4 @@
+import 'package:habit_tracker/models/habit.dart';
 import 'package:habit_tracker/models/record.dart';
 
 class RecordsListEvent {
@@ -12,4 +13,9 @@ class AddOrUpdateRecord extends RecordsListEvent {
 class RemoveRecord extends RecordsListEvent {
   final Record record;
   RemoveRecord({required this.record});
+}
+
+class RemoveRecordsOfAHabit extends RecordsListEvent {
+  final Habit habit;
+  RemoveRecordsOfAHabit({required this.habit});
 }

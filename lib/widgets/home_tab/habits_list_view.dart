@@ -35,6 +35,7 @@ class HabitsListView extends StatelessWidget {
                         habit.endDate) ||
                     selectedDateState.selectedDate == habit.startDate) {
                   return HabitBox(
+                    key: Key(habit.name),
                     habit: habit,
                     date: selectedDateState.selectedDate,
                     record: todaysRecordsWithThisHabit.isEmpty
@@ -42,7 +43,7 @@ class HabitsListView extends StatelessWidget {
                         : todaysRecordsWithThisHabit.elementAt(0),
                   );
                 } else {
-                  return null;
+                  return Container();
                 }
               },
               itemCount: habitsListState.habits.length,

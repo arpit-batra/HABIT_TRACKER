@@ -25,6 +25,18 @@ class HabitsListBloc extends HydratedBloc<HabitsListEvent, HabitsListState> {
       temp.remove(event.habit);
       emit(HabitsListState(habits: temp));
     });
+
+    on((UpdateHabit event, emit) {
+      final temp = state.habits;
+      final targetIndex =
+          temp.indexWhere((element) => element.name == event.habitName);
+      final targetHabit =
+          temp.firstWhere((element) => element.name == event.habitName);
+      final newHabit = targetHabit.copyWith(
+          endDate: event.newEndDate ?? targetHabit.endDate);
+      temp[targetIndex] = newHabit;
+      emit(HabitsListState(habits: temp));
+    });
   }
 
   @override
