@@ -8,7 +8,16 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 class HabitsListBloc extends HydratedBloc<HabitsListEvent, HabitsListState> {
   HabitsListBloc() : super(HabitsListState(habits: [])) {
     on((AddNewHabit event, emit) {
-      emit(HabitsListState(habits: [...state.habits, event.habit]));
+      if (state.habits.any(
+        (element) => element.name == event.habit.name,
+      )) {
+        emit(SameHabitNameErrorState(
+            errorMessage:
+                "Habit with same name already exists, Kindly change the habit name",
+            habits: state.habits));
+      } else {
+        emit(HabitsListState(habits: [...state.habits, event.habit]));
+      }
     });
 
     on((RemoveHabit event, emit) {
