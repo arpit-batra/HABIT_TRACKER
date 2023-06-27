@@ -10,33 +10,41 @@ class HabitSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SelectedHabitBloc, Habit?>(
-        builder: (context, selectedHabitState) {
-      return SizedBox(
-        height: 50,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: habits.length,
-          itemBuilder: (context, index) {
-            return IconButton(
-              onPressed: () {
-                context.read<SelectedHabitBloc>().add(
-                      SelectedHabitChanged(
-                        newSelectedHabit: habits[index],
-                      ),
-                    );
-              },
-              icon: selectedHabitState != null &&
-                      selectedHabitState == habits[index]
-                  ? Icon(
-                      habits[index].icon.icon,
-                      color: selectedHabitState.color,
-                    )
-                  : habits[index].icon,
-            );
-          },
-        ),
-      );
-    });
+    if (habits.isNotEmpty) {
+      context
+          .read<SelectedHabitBloc>()
+          .add(SelectedHabitChanged(newSelectedHabit: habits[0]));
+
+      return BlocBuilder<SelectedHabitBloc, Habit?>(
+          builder: (context, selectedHabitState) {
+        return SizedBox(
+          height: 50,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: habits.length,
+            itemBuilder: (context, index) {
+              return IconButton(
+                onPressed: () {
+                  context.read<SelectedHabitBloc>().add(
+                        SelectedHabitChanged(
+                          newSelectedHabit: habits[index],
+                        ),
+                      );
+                },
+                icon: selectedHabitState != null &&
+                        selectedHabitState == habits[index]
+                    ? Icon(
+                        habits[index].icon.icon,
+                        color: selectedHabitState.color,
+                      )
+                    : habits[index].icon,
+              );
+            },
+          ),
+        );
+      });
+    } else {
+      return const Text("No habits added");
+    }
   }
 }

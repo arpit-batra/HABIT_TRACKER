@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:habit_tracker/bloc/habits_list/habits_list_bloc.dart';
 import 'package:habit_tracker/bloc/records_list/records_list_bloc.dart';
 import 'package:habit_tracker/screens/home_screen.dart';
@@ -13,6 +14,7 @@ void main() async {
   final appDirectory = await getApplicationDocumentsDirectory();
   HydratedBloc.storage =
       await HydratedStorage.build(storageDirectory: appDirectory);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 

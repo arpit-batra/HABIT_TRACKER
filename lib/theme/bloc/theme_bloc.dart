@@ -21,9 +21,9 @@ final ThemeState initialTheme = ThemeState(
         letterSpacing: 5,
       ),
       titleSmall: TextStyle(
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: FontWeight.w800,
-        letterSpacing: 4,
+        letterSpacing: 1,
       ),
       bodyMedium: TextStyle(fontSize: 16),
       labelMedium: TextStyle(
@@ -77,9 +77,9 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
                   letterSpacing: 5,
                   color: Colors.white),
               titleSmall: TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w800,
-                  letterSpacing: 4,
+                  letterSpacing: 1,
                   color: Colors.white),
               bodyMedium: TextStyle(fontSize: 16, color: Colors.white),
               labelMedium: TextStyle(
@@ -122,9 +122,9 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
                   letterSpacing: 5,
                   color: Colors.black),
               titleSmall: TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w800,
-                  letterSpacing: 4,
+                  letterSpacing: 1,
                   color: Colors.black),
               labelMedium: TextStyle(
                 color: Colors.white,

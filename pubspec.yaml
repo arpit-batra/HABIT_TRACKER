@@ -37,21 +37,24 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   flutter_iconpicker:
     path: ./packages/FlutterIconPicker
+  font_awesome_flutter: ^10.4.0
   google_nav_bar: ^5.0.6
   hydrated_bloc: ^9.1.0
   icon_picker:
     path: ./packages/icon_picker
+  icons_plus: ^4.0.0
   json_annotation: ^4.8.1
   json_theme: ^5.0.2+6
+  material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.0.15
   shared_preferences: ^2.1.1
 
 dev_dependencies:
-  json_serializable: ^6.7.0
   build_runner: ^2.4.5
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -63,9 +66,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/EmptyHabits.png
+    - assets/EmptyHabitsDark.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

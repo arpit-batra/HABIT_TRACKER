@@ -26,9 +26,9 @@ class HabitBox extends StatefulWidget {
 
 class _HabitBoxState extends State<HabitBox> with TickerProviderStateMixin {
   //Initializing States
-  late var draggedWidth;
-  late var goalCountCompleted;
-  late var widthOfOneInterval;
+  late double draggedWidth;
+  late int goalCountCompleted;
+  late double widthOfOneInterval;
   late AnimationController animationController;
   late Animation animation;
   var firstLoad = true;
@@ -93,17 +93,41 @@ class _HabitBoxState extends State<HabitBox> with TickerProviderStateMixin {
         });
       },
       onHorizontalDragEnd: (details) {
-        setState(() {
-          draggedWidth = goalCountCompleted * widthOfOneInterval;
-        });
-        context.read<RecordListBloc>().add(
-              AddOrUpdateRecord(
-                record: Record(
-                    habitName: widget.habit.name,
-                    countCompleted: goalCountCompleted,
-                    date: widget.date),
-              ),
-            );
+        if (DateHelper.convertDateToDateTime(widget.date)
+            .isAfter(DateTime.now())) {
+          showDialog(
+              context: context,
+              builder: (ctx) {
+                return AlertDialog(
+                  title: Text(
+                    "Can't complete habits of the future.",
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  actions: [
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text("OK"))
+                  ],
+                );
+              });
+          setState(() {
+            draggedWidth = 0.0;
+          });
+        } else {
+          setState(() {
+            draggedWidth = goalCountCompleted * widthOfOneInterval;
+          });
+          context.read<RecordListBloc>().add(
+                AddOrUpdateRecord(
+                  record: Record(
+                      habitName: widget.habit.name,
+                      countCompleted: goalCountCompleted,
+                      date: widget.date),
+                ),
+              );
+        }
       },
       child: Column(
         children: [

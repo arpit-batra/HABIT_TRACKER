@@ -23,7 +23,7 @@ class NightModePicker extends StatelessWidget {
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
                             "Night Mode",
-                            style: Theme.of(context).textTheme.titleSmall,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
                         GestureDetector(
