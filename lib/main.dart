@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: state.themeData,
             debugShowCheckedModeBanner: false,
-            title: 'Habit Tracker',
+            title: 'Knuckle',
             home: HomeScreen(),
           );
         },
