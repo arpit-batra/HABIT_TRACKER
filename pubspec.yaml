@@ -1,5 +1,6 @@
 name: habit_tracker
-description: A Habit Tracking App that helps you to record, maitain and develop new and helthy habits in your.
+description: A Habit Tracking App that helps you to record, maitain and develop
+  new and helthy habits in your.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -48,10 +49,11 @@ dependencies:
   material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.0.15
   shared_preferences: ^2.1.1
+  url_launcher: ^6.1.11
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.13.1
   build_runner: ^2.4.5
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

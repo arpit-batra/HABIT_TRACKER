@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/widgets/settings_tab/contact_us_button.dart';
 import 'package:habit_tracker/widgets/settings_tab/night_mode_picker.dart';
+import 'package:habit_tracker/widgets/settings_tab/rate_us_button.dart';
 import 'package:habit_tracker/widgets/settings_tab/theme_color_picker.dart';
 import 'package:habit_tracker/widgets/tab_headings.dart';
 
@@ -18,6 +20,8 @@ class SettingsTab extends StatelessWidget {
             const TabHeading(heading: "Settings"),
             NightModePicker(),
             ThemeColorPicker(),
+            RateUsButton(),
+            ContactUsButton(),
           ],
         ),
       ),
