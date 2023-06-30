@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:habit_tracker/bloc/new_habit_form.dart/new_habit_cubit.dart';
 import 'package:habit_tracker/helper/icons_collection.dart';
 import 'package:habit_tracker/models/habit.dart';
@@ -35,7 +36,7 @@ class _IconSelectorState extends State<IconSelector> {
                   'Close',
                   style: TextStyle(fontSize: 18),
                 ));
-            context.read<NewHabitCubit>().setHabitIcon(Icon(iconData));
+            context.read<NewHabitCubit>().setHabitIcon(FaIcon(iconData));
           },
           icon: BlocBuilder<NewHabitCubit, Habit>(
               builder: ((context, state) => state.icon))),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:habit_tracker/models/date.dart';
 import 'package:habit_tracker/models/goal.dart';
 import 'package:habit_tracker/models/habit.dart';
@@ -9,7 +10,7 @@ class NewHabitCubit extends Cubit<Habit> {
       : super(
           Habit(
             id: -1,
-            icon: const Icon(Icons.directions_run),
+            icon: const FaIcon(FontAwesomeIcons.personRunning),
             color: Colors.blue,
             goal: Goal(),
             name: "New Habit",
@@ -26,7 +27,7 @@ class NewHabitCubit extends Cubit<Habit> {
     emit(state.copyWith(color: newColor));
   }
 
-  setHabitIcon(Icon newIcon) {
+  setHabitIcon(FaIcon newIcon) {
     emit((state.copyWith(icon: newIcon)));
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:habit_tracker/models/date.dart';
 import 'package:habit_tracker/models/goal.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -25,16 +26,16 @@ class ColorConverter extends JsonConverter<Color, Map<String, dynamic>> {
   }
 }
 
-class IconConverter extends JsonConverter<Icon, Map<String, dynamic>> {
+class IconConverter extends JsonConverter<FaIcon, Map<String, dynamic>> {
   const IconConverter();
 
   @override
-  Icon fromJson(Map<String, dynamic> json) {
-    return Icon(IconData(json["iconData"], fontFamily: 'MaterialIcons'));
+  FaIcon fromJson(Map<String, dynamic> json) {
+    return FaIcon(IconDataSolid(json["iconData"]));
   }
 
   @override
-  Map<String, dynamic> toJson(Icon object) {
+  Map<String, dynamic> toJson(FaIcon object) {
     return {"iconData": object.icon == null ? 0 : object.icon!.codePoint};
   }
 }
@@ -54,7 +55,7 @@ class Habit {
   String name;
   Color color;
   Goal goal;
-  Icon icon;
+  FaIcon icon;
   Date startDate;
   Date endDate;
 
@@ -63,7 +64,7 @@ class Habit {
       Color? color,
       String? emoji,
       Goal? goal,
-      Icon? icon,
+      FaIcon? icon,
       Date? startDate,
       Date? endDate}) {
     return Habit(
