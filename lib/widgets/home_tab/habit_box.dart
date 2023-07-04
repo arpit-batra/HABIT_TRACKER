@@ -191,7 +191,7 @@ class _HabitBoxState extends State<HabitBox> with TickerProviderStateMixin {
                         child: Align(
                           alignment: Alignment.bottomRight,
                           child: Text(
-                            "${widget.record == null ? 0 : widget.record!.countCompleted}/${widget.habit.goal.goalCount} ${widget.habit.goal.goalUnit == GoalUnit.count ? "" : Goal.goalUnits[widget.habit.goal.goalUnit]}",
+                            "${widget.record == null ? 0 : goalCountCompleted}/${widget.habit.goal.goalCount} ${widget.habit.goal.goalUnit == GoalUnit.count ? "" : Goal.goalUnits[widget.habit.goal.goalUnit]}",
                             style: const TextStyle(fontSize: 12),
                             overflow: TextOverflow.ellipsis,
                           ),
