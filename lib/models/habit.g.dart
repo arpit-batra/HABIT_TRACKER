@@ -16,6 +16,9 @@ Habit _$HabitFromJson(Map<String, dynamic> json) => Habit(
           const IconConverter().fromJson(json['icon'] as Map<String, dynamic>),
       startDate: Date.fromJson(json['startDate'] as Map<String, dynamic>),
       endDate: Date.fromJson(json['endDate'] as Map<String, dynamic>),
+      reminders: (json['reminders'] as List<dynamic>)
+          .map((e) => DateTime.parse(e as String))
+          .toList(),
     );
 
 Map<String, dynamic> _$HabitToJson(Habit instance) => <String, dynamic>{
@@ -26,4 +29,5 @@ Map<String, dynamic> _$HabitToJson(Habit instance) => <String, dynamic>{
       'icon': const IconConverter().toJson(instance.icon),
       'startDate': instance.startDate,
       'endDate': instance.endDate,
+      'reminders': instance.reminders.map((e) => e.toIso8601String()).toList(),
     };

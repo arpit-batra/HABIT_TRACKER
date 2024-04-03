@@ -50,6 +50,7 @@ class Habit {
     required this.icon,
     required this.startDate,
     required this.endDate,
+    required this.reminders,
   });
   int id;
   String name;
@@ -58,6 +59,7 @@ class Habit {
   FaIcon icon;
   Date startDate;
   Date endDate;
+  List<DateTime> reminders;
 
   Habit copyWith(
       {String? name,
@@ -66,7 +68,8 @@ class Habit {
       Goal? goal,
       FaIcon? icon,
       Date? startDate,
-      Date? endDate}) {
+      Date? endDate,
+      List<DateTime>? reminders}) {
     return Habit(
       id: id,
       name: name ?? this.name,
@@ -75,6 +78,7 @@ class Habit {
       icon: icon ?? this.icon,
       startDate: startDate ?? this.startDate,
       endDate: endDate ?? this.endDate,
+      reminders: reminders ?? this.reminders,
     );
   }
 

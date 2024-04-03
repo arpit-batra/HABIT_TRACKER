@@ -9,14 +9,14 @@ class NewHabitCubit extends Cubit<Habit> {
   NewHabitCubit()
       : super(
           Habit(
-            id: -1,
-            icon: const FaIcon(FontAwesomeIcons.personRunning),
-            color: Colors.blue,
-            goal: Goal(),
-            name: "New Habit",
-            startDate: Date.today(),
-            endDate: Date(date: 1, month: 1, year: 2100),
-          ),
+              id: -1,
+              icon: const FaIcon(FontAwesomeIcons.personRunning),
+              color: Colors.blue,
+              goal: Goal(),
+              name: "New Habit",
+              startDate: Date.today(),
+              endDate: Date(date: 1, month: 1, year: 2100),
+              reminders: []),
         );
 
   setHabitName(String newName) {
@@ -42,5 +42,18 @@ class NewHabitCubit extends Cubit<Habit> {
   setHabitGoalFrequency(int newGoalFrequency) {
     emit(
         state.copyWith(goal: state.goal.copyWith(frequency: newGoalFrequency)));
+  }
+
+  addHabitReminder(TimeOfDay timeOfDay) {
+    var temp = state.reminders;
+    temp.add(DateTime(1900, 1, 1, timeOfDay.hour, timeOfDay.minute));
+    emit(state.copyWith(reminders: temp));
+  }
+
+  removeHabitReminder(TimeOfDay timeOfDay) {
+    var temp = state.reminders;
+    temp.removeWhere((element) =>
+        element.hour == timeOfDay.hour && element.minute == timeOfDay.minute);
+    emit(state.copyWith(reminders: temp));
   }
 }

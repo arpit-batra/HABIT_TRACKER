@@ -142,6 +142,58 @@ class _NewHabitFormState extends State<NewHabitForm> {
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             const GoalSelector(),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            Text(
+                              "Reminder",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            BlocBuilder<NewHabitCubit, Habit>(
+                                builder: ((context, state) {
+                              return Row(
+                                children: [
+                                  ...state.reminders
+                                      .map((e) => Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Chip(
+                                              backgroundColor:
+                                                  Theme.of(context).cardColor,
+                                              label: Text(
+                                                "${e.hour}:${e.minute}",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall,
+                                              ),
+                                            ),
+                                          ))
+                                      .toList(),
+                                  Chip(
+                                    labelPadding: EdgeInsets.zero,
+                                    backgroundColor:
+                                        Theme.of(context).cardColor,
+                                    label: GestureDetector(
+                                      onTap: () async {
+                                        final timeSelected =
+                                            await showTimePicker(
+                                          context: context,
+                                          initialTime: TimeOfDay.fromDateTime(
+                                            DateTime.now(),
+                                          ),
+                                        );
+                                        if (timeSelected != null) {
+                                          context
+                                              .read<NewHabitCubit>()
+                                              .addHabitReminder(timeSelected);
+                                        }
+                                      },
+                                      child: const Icon(Icons.add),
+                                    ),
+                                  )
+                                ],
+                              );
+                              ;
+                            }))
                           ],
                         ),
                       ),

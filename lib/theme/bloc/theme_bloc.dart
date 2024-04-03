@@ -65,34 +65,34 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
                 backgroundColor: Color.fromARGB(255, 77, 77, 77)),
             dividerColor: const Color.fromARGB(255, 211, 211, 211),
             textTheme: const TextTheme(
-              titleLarge: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 5,
-                color: Colors.white,
-              ),
-              titleMedium: TextStyle(
-                  fontSize: 18,
+                titleLarge: TextStyle(
+                  fontSize: 28,
                   fontWeight: FontWeight.w800,
                   letterSpacing: 5,
-                  color: Colors.white),
-              titleSmall: TextStyle(
-                  fontSize: 12,
+                  color: Colors.white,
+                ),
+                titleMedium: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 5,
+                    color: Colors.white),
+                titleSmall: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1,
+                    color: Colors.white),
+                bodyMedium: TextStyle(fontSize: 16, color: Colors.white),
+                labelMedium: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                ),
+                labelLarge: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.w800,
-                  letterSpacing: 1,
-                  color: Colors.white),
-              bodyMedium: TextStyle(fontSize: 16, color: Colors.white),
-              labelMedium: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-              ),
-              labelLarge: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 20,
-              ),
-            ),
+                  fontSize: 20,
+                ),
+                bodySmall: TextStyle(color: Colors.white)),
           ),
         ),
       );
@@ -110,34 +110,34 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
                 const BottomSheetThemeData(backgroundColor: Colors.white),
             dividerColor: const Color.fromARGB(255, 63, 63, 63),
             textTheme: const TextTheme(
-              titleLarge: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 5,
-                color: Colors.black,
-              ),
-              titleMedium: TextStyle(
-                  fontSize: 18,
+                titleLarge: TextStyle(
+                  fontSize: 28,
                   fontWeight: FontWeight.w800,
                   letterSpacing: 5,
-                  color: Colors.black),
-              titleSmall: TextStyle(
-                  fontSize: 12,
+                  color: Colors.black,
+                ),
+                titleMedium: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 5,
+                    color: Colors.black),
+                titleSmall: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1,
+                    color: Colors.black),
+                labelMedium: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                ),
+                labelLarge: TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.w800,
-                  letterSpacing: 1,
-                  color: Colors.black),
-              labelMedium: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-              ),
-              labelLarge: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 20,
-              ),
-              bodyMedium: TextStyle(fontSize: 16, color: Colors.black),
-            ),
+                  fontSize: 20,
+                ),
+                bodyMedium: TextStyle(fontSize: 16, color: Colors.black),
+                bodySmall: TextStyle(color: Colors.black)),
           ),
         ),
       );
