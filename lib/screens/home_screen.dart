@@ -2,13 +2,17 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:habit_tracker/main.dart';
 import 'package:habit_tracker/tabs/habit_tracker_tab.dart';
 import 'package:habit_tracker/tabs/home_tab.dart';
 import 'package:habit_tracker/tabs/settings_tab.dart';
 import 'package:habit_tracker/theme/bloc/theme_bloc.dart';
 import 'package:habit_tracker/widgets/home_tab/route_animation.dart';
 import 'package:habit_tracker/widgets/tab_seperator_animation_widget.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -23,6 +27,27 @@ class HomeScreenState extends State<HomeScreen> {
   GlobalKey<TabSeperatorAnimationWidgetState> _leftSwitcherKey = GlobalKey();
   GlobalKey<TabSeperatorAnimationWidgetState> _rightSwitcherKey = GlobalKey();
   int _selectedTab = 0;
+  bool _notificationsEnabled = false;
+  int id = 0;
+
+  Future<void> _requestPermission() async {
+    final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
+        flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+
+    final bool? grantedNotificationPermission =
+        await androidImplementation?.requestNotificationsPermission();
+    setState(() {
+      _notificationsEnabled = grantedNotificationPermission ?? false;
+    });
+  }
+
+  @override
+  void initState() {
+    //For Notifications
+    _requestPermission();
+    super.initState();
+  }
 
   Widget _tabViewer() {
     switch (_selectedTab) {
@@ -35,6 +60,20 @@ class HomeScreenState extends State<HomeScreen> {
       default:
         return Placeholder();
     }
+  }
+
+  Future<void> _showNotification() async {
+    const AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails('your channel id', 'your channel name',
+            channelDescription: 'your channel description',
+            importance: Importance.max,
+            priority: Priority.high,
+            ticker: 'ticker');
+    const NotificationDetails notificationDetails =
+        NotificationDetails(android: androidNotificationDetails);
+    await flutterLocalNotificationsPlugin.show(
+        id++, 'plain title', 'plain body', notificationDetails,
+        payload: 'item x');
   }
 
   @override

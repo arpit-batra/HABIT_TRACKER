@@ -10,6 +10,7 @@ class NameSelector extends StatelessWidget {
     return TextFormField(
       cursorColor: Theme.of(context).primaryColor,
       decoration: InputDecoration(
+        // fillColor: Colors.amber,
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
               color: Theme.of(context).textTheme.titleMedium!.color!),

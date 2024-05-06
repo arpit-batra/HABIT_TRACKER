@@ -6,6 +6,7 @@ import 'package:habit_tracker/bloc/selected_habit.dart/selected_habit_bloc.dart'
 import 'package:habit_tracker/widgets/tab_headings.dart';
 import 'package:habit_tracker/widgets/tracker_tab/habit_calendar.dart';
 import 'package:habit_tracker/widgets/tracker_tab/habit_selector.dart';
+import 'package:habit_tracker/widgets/tracker_tab/year_overview.dart';
 
 class HabitTrackerTab extends StatelessWidget {
   const HabitTrackerTab({super.key});
@@ -21,12 +22,15 @@ class HabitTrackerTab extends StatelessWidget {
             height: double.infinity,
             width: deviceWidth,
             child: SafeArea(
-              child: Column(
-                children: [
-                  const TabHeading(heading: "Tracker"),
-                  HabitSelector(habits: habitsListState.habits),
-                  HabitCalendar(),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const TabHeading(heading: "Tracker"),
+                    HabitSelector(habits: habitsListState.habits),
+                    HabitCalendar(),
+                    YearOverview(),
+                  ],
+                ),
               ),
             ),
           );
