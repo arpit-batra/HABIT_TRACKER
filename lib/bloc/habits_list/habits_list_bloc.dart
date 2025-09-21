@@ -75,7 +75,8 @@ class HabitsListBloc extends HydratedBloc<HabitsListEvent, HabitsListState> {
                       'These notifications will remind you to complete your tasks on times mentioned by you')),
           uiLocalNotificationDateInterpretation:
               UILocalNotificationDateInterpretation.absoluteTime,
-          matchDateTimeComponents: DateTimeComponents.time);
+          matchDateTimeComponents: DateTimeComponents.time,
+          androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle);
       index++;
     }
   }

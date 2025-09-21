@@ -47,8 +47,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _configureLocalTimeZone();
   final appDirectory = await getApplicationDocumentsDirectory();
-  HydratedBloc.storage =
-      await HydratedStorage.build(storageDirectory: appDirectory);
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: HydratedStorageDirectory(appDirectory.path));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   const AndroidInitializationSettings initializationSettingsAndroid =

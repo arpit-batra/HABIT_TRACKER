@@ -168,26 +168,25 @@ class _NewHabitFormState extends State<NewHabitForm> {
                                             ),
                                           ))
                                       .toList(),
-                                  Chip(
-                                    labelPadding: EdgeInsets.zero,
-                                    backgroundColor:
-                                        Theme.of(context).cardColor,
-                                    label: GestureDetector(
-                                      onTap: () async {
-                                        final timeSelected =
-                                            await showTimePicker(
-                                          context: context,
-                                          initialTime: TimeOfDay.fromDateTime(
-                                            DateTime.now(),
-                                          ),
-                                        );
-                                        if (timeSelected != null) {
-                                          context
-                                              .read<NewHabitCubit>()
-                                              .addHabitReminder(timeSelected);
-                                        }
-                                      },
-                                      child: const Icon(Icons.add),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      final timeSelected = await showTimePicker(
+                                        context: context,
+                                        initialTime: TimeOfDay.fromDateTime(
+                                          DateTime.now(),
+                                        ),
+                                      );
+                                      if (timeSelected != null) {
+                                        context
+                                            .read<NewHabitCubit>()
+                                            .addHabitReminder(timeSelected);
+                                      }
+                                    },
+                                    child: Chip(
+                                      labelPadding: EdgeInsets.zero,
+                                      backgroundColor:
+                                          Theme.of(context).cardColor,
+                                      label: const Icon(Icons.add),
                                     ),
                                   )
                                 ],
