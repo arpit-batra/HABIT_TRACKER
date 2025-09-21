@@ -11,8 +11,6 @@ import 'package:habit_tracker/tabs/settings_tab.dart';
 import 'package:habit_tracker/theme/bloc/theme_bloc.dart';
 import 'package:habit_tracker/widgets/home_tab/route_animation.dart';
 import 'package:habit_tracker/widgets/tab_seperator_animation_widget.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
